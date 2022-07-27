@@ -1,9 +1,20 @@
-import Banner from './components/Banner/Banner';
+import { useState } from 'react';
+import Banner from './components/Banner';
+import Form from './components/Form';
 
 function App() {
+
+  const [colaboradores, setColaboradores] = useState([]);
+
+  const aoNovoColaboradorAdicionado = (colaborador) => {
+    setColaboradores([...colaboradores, colaborador]);
+    console.log(colaboradores);
+  }
+
   return (
     <div className="App">
       <Banner />
+      <Form aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)} />
     </div>
   );
 }
